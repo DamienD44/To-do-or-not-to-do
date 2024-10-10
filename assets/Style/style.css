@@ -27,6 +27,8 @@ ul {
 section ul li button{
   margin-top: 380px;
   margin-left: 20%;
+  height: 50px;
+  border-radius: 10px;
   
 
   flex-direction: column;
