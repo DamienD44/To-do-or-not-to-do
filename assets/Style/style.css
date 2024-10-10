@@ -1,11 +1,76 @@
+@import url("https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap");
+
 * {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
+  font-family: "Inria Sans", serif;
+  font-weight: 400;
+  font-style: normal;
+  --main-color: #c4d7f2;
+  --secondary-color: #624cab;
 }
 
+input,
+input:focus {
+  border: 0;
+  outline: none;
+}
+
+header {
+  border: 1px solid black;
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 15vh;
+  background-color: var(--secondary-color);
+}
+
+header h3 {
+  color: var(--main-color);
+}
+header > div > p {
+  color: var(--secondary-color);
+}
+
+header > h3,
+header > div > p {
+  white-space: nowrap;
+}
+
+input::placeholder {
+  color: var(--secondary-color);
+}
+
+header img {
+  height: 50%;
+}
+
+header > div {
+  display: flex;
+  align-items: center;
+  height: 70%;
+  background-color: var(--main-color);
+  border-radius: 5px;
+  padding: 0 10px;
+}
+.searchbar-container {
+  border: 1px solid black;
+  border-radius: 30px;
+  padding: 10px;
+}
+.searchbar-container > input {
+  width: 70%;
+  background-color: var(--main-color);
+}
+.searchbar-container > img {
+  width: 30%;
+  height: 100%;
+}
 /* media query mobile version */
 @media (max-width: 815px) {
 }
