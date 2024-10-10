@@ -24,14 +24,17 @@ ul {
   margin: 25px;
 
 }
-section ul li a{
-  margin-top: 350px;
+section ul li button{
+  margin-top: 380px;
+  margin-left: 20%;
+  
 
   flex-direction: column;
   display: flex;
   justify-content: center;
   align-content: flex-end;
-  border-radius: 2px black solid;
+  
+  
 }
 
 
