@@ -1,10 +1,41 @@
 * {
   box-sizing: border-box;
+  list-style-type: none;
 }
 
 body {
+  
   margin: 0;
 }
+
+ul {
+  display: flex;
+  flex-direction: row;
+  margin: 25px;
+}
+.c1, .c2, .c3{
+  background-color: rgb(88, 88, 171);
+  font-size: 32px;
+  text-align: center;
+  height: 500px;
+  width: 25%;
+  border: 2px black solid;
+  border-radius: 10px;
+  margin: 25px;
+
+}
+ul a{
+  display: flex;
+  justify-content: center;
+  align-content: flex-end;
+  border-radius: 2px black solid;
+}
+
+
+
+
+
+
 
 /* media query mobile version */
 @media (max-width: 815px) {
