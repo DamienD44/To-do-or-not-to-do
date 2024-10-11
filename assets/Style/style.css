@@ -12,6 +12,9 @@ body {
   --main-color: #c4d7f2;
   --secondary-color: #624cab;
 }
+.no-des {
+  display: none;
+}
 
 input,
 input:focus {
@@ -28,6 +31,8 @@ header {
   width: 100%;
   height: 15vh;
   background-color: var(--secondary-color);
+  min-height: 75px;
+  max-height: 100px;
 }
 
 header h3 {
@@ -52,7 +57,7 @@ header > div > p {
 
 input::placeholder {
   color: var(--secondary-color);
-  font-size: 1.5vw;
+  font-size: vw;
 }
 
 header img {
@@ -96,7 +101,26 @@ header > div {
 }
 /* media query mobile version */
 @media (max-width: 450px) {
-  * {
-    color: red !important;
+  .no-des {
+    display: block;
+  }
+  .no-mob {
+    display: none;
+  }
+  header {
+    min-height: 75px;
+    max-height: 100px;
+  }
+  header > img {
+    width: 10%;
+  }
+  header > div {
+    width: 60%;
+  }
+  .searchbar-container {
+    border-radius: 8px;
+  }
+  .searchbar-container > img {
+    height: 50%;
   }
 }
