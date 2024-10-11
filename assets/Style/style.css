@@ -7,13 +7,71 @@ body {
   
   margin: 0;
 }
-
-ul {
-  display: flex;
-  
-  margin: 25px;
+header{
+  background-color: blueviolet;
+  height: 75px;
+  width: 100%;
 }
-.c1, .c2, .c3{
+
+nav{
+  display: flex;
+  flex-direction: row;
+  
+  
+
+}
+
+#menu{
+  height: 50px;
+  width: 50px;
+}
+
+.recherche{
+  height: 50px;
+  width: 100px;
+  margin-left: 16px;
+}
+
+.categorie{
+  display: flex;
+  flex-direction: row;
+}
+
+.titre{
+  height: 50px;
+  margin-left: 16px;
+
+}
+.add{
+  border: 2px solid rgb(229, 220, 220);
+  height: 50px;
+
+  margin-left: 25%;
+  display: flex;
+
+ }
+
+h3{
+  height: 50px;
+  margin-top: 0;
+}
+
+.plus{
+  height: 25px;
+}
+
+
+.addcat{
+  display: flex;
+  justify-content: center;
+}
+.categorie{
+  justify-content: center;
+  margin-top: 100px;
+}
+
+  
+.cat1{
   background-color: rgb(88, 88, 171);
   font-size: 32px;
   text-align: center;
@@ -24,19 +82,38 @@ ul {
   margin: 25px;
 
 }
-section ul li button{
-  margin-top: 380px;
-  margin-left: 20%;
-  height: 50px;
-  border-radius: 10px;
-  
 
-  flex-direction: column;
-  display: flex;
-  justify-content: center;
-  align-content: flex-end;
+.cat2{
+  background-color: rgb(88, 88, 171);
+  font-size: 32px;
+  text-align: center;
+  height: 500px;
+  width: 25%;
+  border: 2px black solid;
+  border-radius: 10px;
+  margin: 25px;
+
+}
+
+.cat3{
+  background-color: rgb(88, 88, 171);
+  font-size: 32px;
+  text-align: center;
+  height: 500px;
+  width: 25%;
+  border: 2px black solid;
+  border-radius: 10px;
+  margin: 25px;
+
+}
+
+.btn1, .btn2, .btn3{
+  border-radius: 2px;
   
   
+}
+.btn1, .btn2, .btn3 :hover{
+  cursor: grab;
 }
 
 

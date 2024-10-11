@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,21 +7,78 @@
     <script src="./assets/JS/script.js" defer></script>
     <title>Wild Remind Me</title>
   </head>
+  
+  
   <body>
-    <header></header>
+    <header>
+      <nav>
+        <div class="menuburger">
+        <img id="menu" src="./Image/menuburger.svg" alt="menuburger">
+        </div>
+        <div class="titre">
+      <h1> Wild Remind Me</h1>
+        </div>
+      <div class="recherche">
+      <input  type="search">
+      <input type="button" value="Rechercher">
+      </div>
+      <div  class="add">
+        <h3> Add Catégorie <img class="plus" src="./Image/add_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" > </h3>
+      </div>
+      </nav>
+
+    </header>
+    
     <main>
-      <section class="bordercard">
-        <ul>
-          <li class="c1"> Catégorie 1  <button> Créer une tâche </button> </li>
-          <li class="c2"> Catégorie 2 <button > Créer une tâche </button> </li>
-          <li class="c3"> Catégorie 3 <button> Créer une tâche </button> </li>
-
-
+      <section class="categorie">
+     
+      
+        <article class="cat1">
+          <h2> Catégorie 1 </h2>
+          
+          <input type="text1" id="tache1" placeholder="Ajouter une tâche" maxlength="40">
+          <input type="button" id="btn1" value="Ajouter">
+          <ul>
+          <p class="output" id="cat1"></p>
         </ul>
+        </article>
+
+        <article class="cat2">
+          <h2> Catégorie 2 </h2>
+
+          <input type="text2" id="tache2" placeholder="Ajouter une tâche" maxlength="40">
+          <input type="button" id="btn2" value="Ajouter">
+          <p class="output2" id="output2"></p>
+        </article>
+
+        <article class="cat3">
+          <h2> Catégorie 3 </h2>
+
+          <input type="text3" id="tache3" placeholder="Ajouter une tâche" maxlength="40">
+          <input type="button" id="btn3" value="Ajouter">
+          <p class="output3" id="output3"></p>
+
+
+
+        </article>
+      </section>
+        
+        
+        
+        <div class="addcat">
+          <input type="text" id="cat" placeholder="Ajouter une catégorie" />
+          <input type="button" id="btncat" value="Ajouter"/>
+        </div>
+          
           
         
 
-      </section>
+
+        
+          
+        
+
+      
 
     </main>
   </body>
