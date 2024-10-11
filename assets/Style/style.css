@@ -6,6 +6,51 @@ body {
   margin: 0;
 }
 
+header {
+  display: flex;
+  height: 15vh;
+  justify-content: space-evenly;
+  background-color: blueviolet;
+}
+
+main {
+  margin-top: 20px;
+}
+
+header > img,
+header > div > img,
+header > div > input {
+  height: 50%;
+}
+header > div {
+  display: flex;
+  height: 80%;
+}
+
+header > h3,
+header > div {
+  width: 20%;
+}
+
+header > h3,
+header > div > p {
+  font-size: 2vw;
+}
+
+.container {
+  height: 50vh;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.container > div {
+  height: 100%;
+  background-color: lavenderblush;
+  border: 2px solid blue;
+  width: 25%;
+}
+
 /* media query mobile version */
 @media (max-width: 815px) {
 }
