@@ -6,13 +6,19 @@
 const inputBox = document.getElementById("input-box");
 const listContainer = document.getElementById("list-container");
 
-function addTask(){
-    if(inputBox.value ===''){
+function addTask() {
+    if (inputBox.value === '') {
         alert("Vous devez écrire quelquechose!");
     }
-    else{
+    else {
         const li = document.createElement("li");
         li.innerHTML = inputBox.value;
+        li.style.border = "solid 1px black";
+        li.style.backgroundColor = "white";
+        li.style.display = "flex";
+        li.style.flexDirection = "row"
+        li.style.margintop = "10px";
+
         listContainer.appendChild(li);
     }
 }
@@ -24,13 +30,18 @@ function addTask(){
 const inputBox1 = document.getElementById("input-box1");
 const listContainer1 = document.getElementById("list-container1");
 
-function addTask1(){
-    if(inputBox1.value ===''){
+function addTask1() {
+    if (inputBox1.value === '') {
         alert("Vous devez écrire quelquechose!");
     }
-    else{
+    else {
         const li = document.createElement("li");
         li.innerHTML = inputBox1.value;
+        li.style.border = "solid 1px black";
+        li.style.backgroundColor = "white";
+        li.style.display = "flex";
+        li.style.flexDirection = "row"
+        li.style.margintop = "10px";
         listContainer1.appendChild(li);
     }
 }
@@ -40,13 +51,20 @@ function addTask1(){
 const inputBox2 = document.getElementById("input-box2");
 const listContainer2 = document.getElementById("list-container2");
 
-function addTask2(){
-    if(inputBox2.value ===''){
+function addTask2() {
+    if (inputBox2.value === '') {
         alert("Vous devez écrire quelquechose!");
     }
-    else{
+    else {
         const li = document.createElement("li");
+        li.style.border = "solid 1px black";
+        li.style.backgroundColor = "white";
+        li.style.display = "flex";
+        li.style.flexDirection = "row"
+
         li.innerHTML = inputBox2.value;
         listContainer2.appendChild(li);
     }
 }
+
+

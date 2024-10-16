@@ -4,71 +4,103 @@
 }
 
 body {
-  
+
   margin: 0;
 }
-header{
+
+header {
   background-color: blueviolet;
   height: 75px;
   width: 100%;
 }
 
-nav{
+nav {
   display: flex;
   flex-direction: row;
-  
-  
+
+
 
 }
 
-#menu{
+#menu {
   height: 50px;
   width: 50px;
 }
 
-.recherche{
+.recherche {
   display: flex;
   align-items: center;
   height: 25px;
   width: 50px;
   margin-left: 16px;
 }
-.add{
+
+.add {
   display: flex;
   margin-top: 0;
 }
 
-.add img{
+.add img {
   height: 50px;
   width: 50px;
 }
 
-#container, #container1, #container2{
+.containertotal {
   display: flex;
-  flex-direction: row;
-  height: 250px;
-  width: 150px;
+  height: 500px;
+  margin-top: 5%;
+
 
 }
 
+#list-container,
+#list-container1,
+#list-container2 {
+  padding: 0;
 
-.addcat{
+}
+
+h2 {
+  text-align: center;
+}
+
+#container,
+#container1,
+#container2 {
+  border: 2px solid black;
+  height: 500px;
+  width: 25%;
+  justify-content: space-around;
+  margin: auto;
+  background-color: #C4D7F2;
+  border-radius: 20px;
+}
+
+.checked {
+  background-color: antiquewhite;
+}
+
+#input-box {
+  width: 40%;
+}
+
+#input-box1 {
+  width: 40%;
+}
+
+#input-box2 {
+  width: 40%;
+}
+
+
+.addcat {
   display: flex;
   justify-content: center;
 }
 
 
-.btn1, .btn2, .btn3{
-  border-radius: 2px;
-  }
 
-  .btn1, .btn2, .btn3 :hover{
-  cursor: grab;
+button {
+  background-color: rgb(234, 42, 3);
+  cursor: pointer;
 }
-
-
-
-
-
-
-
