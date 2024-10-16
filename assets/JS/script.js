@@ -14,12 +14,15 @@ function addTask() {
         const li = document.createElement("li");
         li.innerHTML = inputBox.value;
         li.style.border = "solid 1px black";
+        li.style.borderRadius = "10px";
         li.style.backgroundColor = "white";
-        li.style.display = "flex";
-        li.style.flexDirection = "row"
         li.style.margintop = "10px";
+        li.style.width = "90%";
+        li.style.margin = "auto"
 
         listContainer.appendChild(li);
+        li.style.marginBlock = "10px";
+        li.style.height = "50px";
     }
 }
 
@@ -38,11 +41,14 @@ function addTask1() {
         const li = document.createElement("li");
         li.innerHTML = inputBox1.value;
         li.style.border = "solid 1px black";
+        li.style.borderRadius = "10px";
         li.style.backgroundColor = "white";
-        li.style.display = "flex";
-        li.style.flexDirection = "row"
         li.style.margintop = "10px";
+        li.style.width = "90%";
+        li.style.margin = "auto"
         listContainer1.appendChild(li);
+        li.style.marginBlock = "10px";
+        li.style.height = "50px";
     }
 }
 
@@ -58,12 +64,14 @@ function addTask2() {
     else {
         const li = document.createElement("li");
         li.style.border = "solid 1px black";
+        li.style.borderRadius = "10px";
         li.style.backgroundColor = "white";
-        li.style.display = "flex";
-        li.style.flexDirection = "row"
-
         li.innerHTML = inputBox2.value;
+        li.style.width = "90%";
+        li.style.margin = "auto"
         listContainer2.appendChild(li);
+        li.style.marginBlock = "10px";
+        li.style.height = "50px";
     }
 }
 
