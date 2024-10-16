@@ -1,4 +1,9 @@
 /* Partie création de cartes manuel */
+
+// Sample des cartes à mettre dans le localstorage
+//[{"title":"Carte 0","content":["Ceci est la carte 0, tache 0","Ceci est la carte 0, tache 1"]},{"title":"Carte 1","content":["Ceci est la carte 1, tache 0","Ceci est la carte 1, tache 1"]},{"title":"Carte 2","content":["Ceci est la carte 2, tache 0","Ceci est la carte 2, tache 1"]},{"title":"Carte 3","content":["Ceci est la carte 3, tache 0","Ceci est la carte 3, tache 1"]},{"title":"Carte 4","content":["Ceci est la carte 4, tache 0","Ceci est la carte 4, tache 1"]}]
+
+/*
 let cartes = [];
 let nbrOfCard = 5;
 for (let y = 0; y < nbrOfCard; y++)
@@ -9,6 +14,9 @@ for (let y = 0; y < nbrOfCard; y++)
       `Ceci est la carte ${y}, tache 1`,
     ],
   });
+*/
+/* Partie cartes dynamique depuis localstorage */
+let cards = JSON.parse(localStorage.getItem("cards"));
 
 /* desktop version */
 let index = 0;
@@ -19,14 +27,14 @@ displayMainContent();
 function displayMainContent() {
   const mainContent = document.querySelector(".main-container");
   mainContent.innerHTML = null;
-  for (let x = 0; x < 3 && cartes[index + x]; x++) {
+  for (let x = 0; x < 3 && cards[index + x]; x++) {
     let card = document.createElement("div");
     card.classList.add("main-card");
     let cardTitle = document.createElement("p");
     cardTitle.classList.add("card-title");
-    cardTitle.textContent = cartes[index + x].title;
+    cardTitle.textContent = cards[index + x].title;
     card.appendChild(cardTitle);
-    for (const todo of cartes[index + x].content) {
+    for (const todo of cards[index + x].content) {
       let task = document.createElement("p");
       task.classList.add("todo");
       task.textContent = todo;
@@ -40,7 +48,7 @@ function displayPrecCard() {
   if (carousselPrecElement) carousselPrecElement.remove();
   const precCardElement = document.querySelector(".card-prec");
   if (precCardElement) precCardElement.remove();
-  if (cartes[index - 1]) {
+  if (cards[index - 1]) {
     //  Créer la prévisu de la carte précédente
     let precCard = document.createElement("div");
     precCard.classList.add("future-card", "card-prec");
@@ -67,7 +75,7 @@ function displayNextCard() {
   if (carousselNextElement) carousselNextElement.remove();
   const nextCardElement = document.querySelector(".card-next");
   if (nextCardElement) nextCardElement.remove();
-  if (cartes[index + 3]) {
+  if (cards[index + 3]) {
     let nextCard = document.createElement("div");
     nextCard.classList.add("future-card", "card-next");
     document
@@ -94,7 +102,7 @@ displayMobileMainContent();
 function displayMobileMainContent() {
   const mobileMainContent = document.querySelector(".mobile-main-container");
   mobileMainContent.innerHTML = null;
-  for (const carte of cartes) {
+  for (const carte of cards) {
     let card = document.createElement("li");
 
     let cardHead = document.createElement("div");
@@ -115,6 +123,27 @@ function displayMobileMainContent() {
     cardHead.appendChild(cardExtendButton);
     mobileMainContent.appendChild(card);
   }
+  displayCreateCategoryMobile(mobileMainContent);
+}
+function displayCreateCategoryMobile(parent) {
+  let card = document.createElement("li");
+
+  let cardHead = document.createElement("div");
+  cardHead.classList.add("mobile-card-head", "card-create-category");
+
+  let cardExtendButton = document.createElement("img");
+  cardExtendButton.src = "https://www.svgrepo.com/show/532997/plus-large.svg";
+  cardExtendButton.classList.add("card-extend-button");
+  card.addEventListener("click", () => {
+    createPopup();
+  });
+  let cardTitle = document.createElement("p");
+  cardTitle.textContent = "Create a new category";
+
+  card.appendChild(cardHead);
+  cardHead.appendChild(cardTitle);
+  cardHead.appendChild(cardExtendButton);
+  parent.appendChild(card);
 }
 function extendCard(card) {
   const arrowUp = "https://www.svgrepo.com/show/521486/arrow-up.svg";
@@ -123,7 +152,7 @@ function extendCard(card) {
   if (extendButton.src === arrowDown) {
     extendButton.src = arrowUp;
     const cardTitle = card.querySelector("p").innerHTML;
-    const cardContent = cartes.find((el) =>
+    const cardContent = cards.find((el) =>
       el.title.includes(cardTitle)
     ).content;
     let cardContentContainer = document.createElement("ul");
@@ -139,4 +168,58 @@ function extendCard(card) {
     extendButton.src = arrowDown;
     card.querySelector(".mobile-card-content-container").remove();
   }
+}
+
+/* common functions */
+document.querySelector(".add-category-button").addEventListener("click", () => {
+  createPopup();
+});
+function createPopup() {
+  document.querySelector("main").style.filter = "blur(1.25px)";
+  document.querySelector("header").style.filter = "blur(1.25px)";
+  let createCategory = document.createElement("div");
+  let createCategoryTitle = document.createElement("h2");
+  let createCategoryInput = document.createElement("input");
+  let buttonsContainer = document.createElement("div");
+  let createCategorySubmit = document.createElement("button");
+  let createCategoryCancel = document.createElement("button");
+  createCategoryTitle.innerText = "Create a new category";
+  createCategoryInput.placeholder = "My super category name !";
+  createCategorySubmit.textContent = "Submit";
+  createCategoryCancel.textContent = "Cancel";
+  buttonsContainer.classList.add("new-category-buttons-container");
+  createCategory.classList.add("new-category-container");
+  document.body.appendChild(createCategory);
+  buttonsContainer.appendChild(createCategoryCancel);
+  buttonsContainer.appendChild(createCategorySubmit);
+  const elements = [createCategoryTitle, createCategoryInput, buttonsContainer];
+  elements.forEach((el) => {
+    createCategory.appendChild(el);
+  });
+  //          Handle cancel button
+  createCategoryCancel.addEventListener("click", () => {
+    removePopup();
+  });
+  //          Handle submit button
+  createCategorySubmit.addEventListener("click", () => {
+    const newCategory = createCategoryInput.value;
+    if (newCategory) {
+      removePopup();
+      createNewCategory(newCategory);
+    }
+  });
+}
+function removePopup() {
+  document.querySelector(".new-category-container").remove();
+  document.querySelector("main").style.filter = "blur(0)";
+  document.querySelector("header").style.filter = "blur(0)";
+}
+function createNewCategory(categoryName) {
+  let data = localStorage.getItem("cards");
+  data = JSON.parse(data);
+  data.push({ title: categoryName, content: [] });
+  localStorage.setItem("cards", JSON.stringify(data));
+  cards = data;
+  displayNextCard();
+  displayMainContent();
 }
