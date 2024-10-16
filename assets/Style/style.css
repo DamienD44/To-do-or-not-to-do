@@ -37,11 +37,17 @@ header > div > p {
   font-size: 2vw;
 }
 
+header > h3 > p {
+  margin: 0;
+  color: white;
+}
+
 .container {
   height: 50vh;
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content:space-around;
+  
 }
 
 .container > div {
@@ -49,6 +55,55 @@ header > div > p {
   background-color: lavenderblush;
   border: 2px solid blue;
   width: 25%;
+}
+
+.image-principale {
+  height: 15vh;
+}
+
+.test {
+  align-items: center;
+  background-color: rgba(196, 215, 242, 1);
+  border-radius: 10px;
+  margin-top: 10px;
+  padding-left: 15px;
+}
+
+#bloc1 {
+  padding-left: 35px;
+  border-radius: 60px;
+}
+
+.login {
+  margin-top: 15px;
+  height: 70%;
+  border-radius: 10px;
+}
+
+header > h3 {
+  color: white;
+}
+
+.container > div {
+  border-radius: 30px;
+  height: 500px;
+  width: 280px;
+}
+
+ul {
+  padding: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+li {
+  border: 2px solid blue;
+  height: 60px;
+  width: 80%;
+  border-radius: 20px;
+  list-style: none;
+  margin-top: 20px;
 }
 
 /* media query mobile version */
