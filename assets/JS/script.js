@@ -1,7 +1,57 @@
 /* Mise en place des listes de tâche de la catégorie 1*/
 
+let cards = localStorage.getItem("cards")
 
 
+const mainContainer = document.querySelector('.containertotal')
+cards = JSON.parse(cards)
+for (const card of cards) {
+    createCardHead(mainContainer, card)
+}
+
+//  ca c'est le titre + la carte
+function createCardHead(parent, card) {
+    const cardDiv = document.createElement("div")
+    const cardToDoApp = document.createElement("div")
+    const cardTitle = document.createElement("h2")
+
+    cardTitle.innerHTML = card.title
+
+    cardToDoApp.classList.add("todo-app");
+    cardDiv.classList.add("container");
+    cardToDoApp.appendChild(cardTitle)
+    createRow(cardToDoApp)
+    listTask(cardToDoApp, card)
+    cardDiv.appendChild(cardToDoApp)
+    parent.appendChild(cardDiv)
+}
+
+function createRow(parent) {
+    const cardDiv = document.createElement("div")
+    const inputTxt = document.createElement("input");
+    const addBtn = document.createElement("button")
+    inputTxt.classList.add("input-box")
+    inputTxt.placeholder = "Ajouter une tâche"
+    addBtn.innerHTML = "ajouter"
+    cardDiv.appendChild(inputTxt)
+    cardDiv.appendChild(addBtn)
+    cardDiv.classList.add(`row`)
+    parent.appendChild(cardDiv)
+}
+function listTask(parent, card) {
+    const cardList = document.createElement("ul")
+
+    cardList.classList.add("list-container")
+    parent.appendChild(cardList)
+
+
+    for (const task of card.content) {
+        const elementTask = document.createElement("li")
+        elementTask.innerHTML = task
+        cardList.appendChild(elementTask)
+    }
+
+}
 
 const inputBox = document.getElementById("input-box");
 const listContainer = document.getElementById("list-container");
@@ -19,16 +69,9 @@ function addTask() {
         li.classList.add("task-list");
         li.innerHTML = inputBox.value;
         localStorage.setItem("task", inputBox.value);
-
-        // li.style.border = "solid 1px black";
-        // li.style.borderRadius = "10px";
-        // li.style.backgroundColor = "white";
-        // li.style.margintop = "10px";
-        // li.style.width = "90%";
-        // li.style.margin = "auto"
         listContainer.appendChild(li);
-        // li.style.marginBlock = "10px";
-        // li.style.height = "50px";
+
+
     }
 }
 
@@ -47,16 +90,9 @@ function addTask1() {
         const li = document.createElement("li");
         li.classList.add("task-list1");
         li.innerHTML = inputBox1.value;
-        localStorage.setItem("task", inputBox.value);
-        li.style.border = "solid 1px black";
-        li.style.borderRadius = "10px";
-        li.style.backgroundColor = "white";
-        li.style.margintop = "10px";
-        li.style.width = "90%";
-        li.style.margin = "auto"
+        localStorage.setItem("task", inputBox1.value);
         listContainer1.appendChild(li);
-        li.style.marginBlock = "10px";
-        li.style.height = "50px";
+
     }
 }
 
@@ -71,16 +107,12 @@ function addTask2() {
     }
     else {
         const li = document.createElement("li");
-        li.style.border = "solid 1px black";
-        li.style.borderRadius = "10px";
-        li.style.backgroundColor = "white";
+        li.classList.add("task-list2");
         li.innerHTML = inputBox2.value;
-        localStorage.setItem("task", inputBox.value);
-        li.style.width = "90%";
-        li.style.margin = "auto"
+        localStorage.setItem("task", inputBox2.value);
         listContainer2.appendChild(li);
-        li.style.marginBlock = "10px";
-        li.style.height = "50px";
+
+
     }
 }
 

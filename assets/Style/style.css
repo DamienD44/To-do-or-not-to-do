@@ -67,9 +67,7 @@ h2 {
 
 
 
-#row,
-#row1,
-#row2 {
+.row {
   margin: 0 20px;
 }
 
@@ -85,20 +83,22 @@ h2 {
   border-radius: 20px;
 }
 
+.container {
+  border: 2px solid black;
+  height: 500px;
+  width: 25%;
+  justify-content: space-around;
+  margin: auto;
+  background-color: #C4D7F2;
+  border-radius: 20px;
+}
+
 .checked {
   background-color: antiquewhite;
 }
 
-#input-box {
-  width: 40%;
-}
-
-#input-box1 {
-  width: 40%;
-}
-
-#input-box2 {
-  width: 40%;
+.input-box {
+  width: 40%
 }
 
 
@@ -118,7 +118,8 @@ button {
 /* List container */
 
 .task-list,
-.task-list1 {
+.task-list1,
+.task-list2 {
   border: solid 1px black;
   border-radius: 10px;
   background-color: white;
