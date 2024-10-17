@@ -28,6 +28,7 @@ function displayMainContent() {
   const mainContent = document.querySelector(".main-container");
   mainContent.innerHTML = null;
   for (let x = 0; x < 3 && cards[index + x]; x++) {
+    cards = JSON.parse(localStorage.getItem("cards"));
     let card = document.createElement("div");
     card.classList.add("main-card");
     let cardTitle = document.createElement("p");
@@ -43,6 +44,9 @@ function displayMainContent() {
     let addTask = document.createElement("div");
     addTask.classList.add("todo");
     addTask.textContent = "Ajouter une tâche";
+    addTask.addEventListener("click", () => {
+      createPopup("task", cardTitle.textContent);
+    });
     card.appendChild(addTask);
     mainContent.appendChild(card);
   }
@@ -144,7 +148,7 @@ function displayCreateCategoryMobile(parent) {
   cardExtendButton.src = "https://www.svgrepo.com/show/532997/plus-large.svg";
   cardExtendButton.classList.add("card-extend-button");
   card.addEventListener("click", () => {
-    createPopup();
+    createPopup("category");
   });
   let cardTitle = document.createElement("p");
   cardTitle.textContent = "Create a new category";
@@ -183,9 +187,9 @@ function extendCard(card) {
 
 //    Create category
 document.querySelector(".add-category-button").addEventListener("click", () => {
-  createPopup();
+  createPopup("category");
 });
-function createPopup() {
+function createPopup(type, content) {
   document.querySelector("main").style.filter = "blur(1.25px)";
   document.querySelector("header").style.filter = "blur(1.25px)";
   let createCategory = document.createElement("div");
@@ -194,8 +198,8 @@ function createPopup() {
   let buttonsContainer = document.createElement("div");
   let createCategorySubmit = document.createElement("button");
   let createCategoryCancel = document.createElement("button");
-  createCategoryTitle.innerText = "Create a new category";
-  createCategoryInput.placeholder = "My super category name !";
+  createCategoryTitle.innerText = `Create a new ${type}`;
+  createCategoryInput.placeholder = `My super ${type} name !`;
   createCategorySubmit.textContent = "Submit";
   createCategoryCancel.textContent = "Cancel";
   buttonsContainer.classList.add("new-category-buttons-container");
@@ -216,7 +220,14 @@ function createPopup() {
     const newCategory = createCategoryInput.value;
     if (newCategory) {
       removePopup();
-      createNewCategory(newCategory);
+      if (type === "category") {
+        createNewCategory(newCategory);
+      } else if (type === "task") {
+        createNewTask(newCategory, content);
+      }
+      displayNextCard();
+      displayMainContent();
+      displayMobileMainContent();
     }
   });
 }
@@ -231,9 +242,15 @@ function createNewCategory(categoryName) {
   data.push({ title: categoryName, content: [] });
   localStorage.setItem("cards", JSON.stringify(data));
   cards = data;
-  displayNextCard();
-  displayMainContent();
-  displayMobileMainContent();
+}
+function createNewTask(taskcontent, categoryName) {
+  let newCard = localStorage.getItem("cards");
+  newCard = JSON.parse(newCard);
+  for (const cate of newCard) {
+    if (cate.title === categoryName) cate.content.push(taskcontent);
+  }
+  newCard = JSON.stringify(newCard);
+  localStorage.setItem("cards", newCard);
 }
 
 //    Search category function
@@ -319,6 +336,7 @@ function removeMenu(el) {
   document.querySelector("header").style.filter = "blur(0)";
 }
 
+/*
 addBtn.addEventListener("click", () => {
   const newTask = inputTxt.value;
   const category = parent.querySelector("h2").innerHTML;
@@ -330,15 +348,4 @@ addBtn.addEventListener("click", () => {
   newCard = JSON.stringify(newCard);
   localStorage.setItem("cards", newCard);
 });
-
-addBtn.addEventListener("click", () => {
-  const newTask = inputTxt.value;
-  const category = parent.querySelector("h2").innerHTML;
-  let newCard = localStorage.getItem("cards");
-  newCard = JSON.parse(newCard);
-  for (const cate of newCard) {
-    if (cate.title === category) cate.content.push(newTask);
-  }
-  newCard = JSON.stringify(newCard);
-  localStorage.setItem("cards", newCard);
-});
+*/
