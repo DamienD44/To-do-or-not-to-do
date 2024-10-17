@@ -68,6 +68,8 @@ function displayPrecCard() {
     document
       .querySelector(".main-container")
       .insertAdjacentElement("beforebegin", preButton);
+  } else if (cards.length <= 3) {
+    carousselContainer.style.justifyContent = "center";
   } else carousselContainer.style.justifyContent = "flex-end";
 }
 function displayNextCard() {
@@ -94,6 +96,8 @@ function displayNextCard() {
     document
       .querySelector(".main-container")
       .insertAdjacentElement("afterend", nextButton);
+  } else if (cards.length <= 3) {
+    carousselContainer.style.justifyContent = "center";
   } else carousselContainer.style.justifyContent = "flex-start";
 }
 
@@ -171,6 +175,8 @@ function extendCard(card) {
 }
 
 /* common functions */
+
+//    Create category
 document.querySelector(".add-category-button").addEventListener("click", () => {
   createPopup();
 });
@@ -222,4 +228,87 @@ function createNewCategory(categoryName) {
   cards = data;
   displayNextCard();
   displayMainContent();
+}
+
+//    Search category function
+const searchInput = document.querySelector(".searchbar-container > input");
+searchInput.addEventListener("input", (event) => {
+  cards = JSON.parse(localStorage.getItem("cards"));
+  cards = cards.filter((el) => {
+    return el.title.includes(event.target.value);
+  });
+  index = 0;
+  displayPrecCard();
+  displayNextCard();
+  displayMainContent();
+  displayMobileMainContent();
+});
+
+//    Sandwich menu
+const menuButtons = document.querySelectorAll(".sandwich-button");
+for (const menuButton of menuButtons) {
+  menuButton.addEventListener("click", () => {
+    createMenu();
+  });
+}
+function createMenu() {
+  document.querySelector("main").style.filter = "blur(1.25px)";
+  document.querySelector("header").style.filter = "blur(1.25px)";
+  let burgerMenu = document.createElement("div");
+  let burgerMenuHeadDiv = document.createElement("div");
+  let burgerMenuHeadTitle = document.createElement("h2");
+  let burgerMenuHeadImg = document.createElement("img");
+  burgerMenuHeadImg.addEventListener("click", () => {
+    removeMenu(burgerMenu);
+  });
+  burgerMenu.classList.add("burger-menu-container");
+  burgerMenuHeadDiv.classList.add("burger-menu-head-container");
+  burgerMenuHeadTitle.innerText = "Wild Remind Me";
+  burgerMenuHeadImg.src = "https://www.svgrepo.com/show/521590/cross.svg";
+  document.body.appendChild(burgerMenu);
+  burgerMenu.appendChild(burgerMenuHeadDiv);
+  burgerMenuHeadDiv.appendChild(burgerMenuHeadTitle);
+  burgerMenuHeadDiv.appendChild(burgerMenuHeadImg);
+  listCategories(burgerMenu);
+  listLinksMenu(burgerMenu);
+}
+function listCategories(parent) {
+  let categoryList = document.createElement("ul");
+  categoryList.classList.add("burger-menu-category-list-container");
+  const title = "Category list";
+  let burgerMenuListTitle = document.createElement("h3");
+  burgerMenuListTitle.innerText = title;
+  parent.appendChild(burgerMenuListTitle);
+  for (const card of cards) {
+    let categoryTitle = document.createElement("li");
+    categoryTitle.innerText = card.title;
+    categoryTitle.classList.add("burger-menu-category");
+    categoryList.appendChild(categoryTitle);
+  }
+  parent.appendChild(categoryList);
+  let separator = document.createElement("hr");
+  parent.appendChild(separator);
+}
+function listLinksMenu(parent) {
+  const links = ["About us", "Contact", "legal mentions"];
+  const Title = "Liens inutile";
+  let burgerMenuHeadTitle = document.createElement("h3");
+  let categoryList = document.createElement("ul");
+  categoryList.classList.add("links-list-container");
+  burgerMenuHeadTitle.innerText = Title;
+  parent.appendChild(burgerMenuHeadTitle);
+  parent.appendChild(categoryList);
+  for (const link of links) {
+    const linkElement = document.createElement("li");
+    const linkElementA = document.createElement("a");
+    linkElementA.href = `/${link}`;
+    linkElementA.innerText = link;
+    linkElement.appendChild(linkElementA);
+    categoryList.appendChild(linkElement);
+  }
+}
+function removeMenu(el) {
+  el.remove();
+  document.querySelector("main").style.filter = "blur(0)";
+  document.querySelector("header").style.filter = "blur(0)";
 }
