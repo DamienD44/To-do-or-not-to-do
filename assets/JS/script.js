@@ -37,6 +37,18 @@ function createRow(parent) {
     cardDiv.appendChild(addBtn)
     cardDiv.classList.add(`row`)
     parent.appendChild(cardDiv)
+    addBtn.addEventListener("click", () => {
+        const newTask = inputTxt.value
+        const category = parent.querySelector('h2').innerHTML
+        let newCard = localStorage.getItem("cards")
+        newCard = JSON.parse(newCard)
+        for (const cate of newCard) {
+            if (cate.title === category)
+                cate.content.push(newTask)
+        }
+        newCard = JSON.stringify(newCard)
+        localStorage.setItem('cards', newCard)
+    })
 }
 function listTask(parent, card) {
     const cardList = document.createElement("ul")
@@ -53,12 +65,11 @@ function listTask(parent, card) {
 
 }
 
-const inputBox = document.getElementById("input-box");
-const listContainer = document.getElementById("list-container");
-const li = document.createElement("li");
-li.innerHTML = localStorage.getItem("task");
-li.classList.add("task-list");
-listContainer.appendChild(li);
+
+
+
+
+
 
 function addTask() {
     if (inputBox.value === '') {
@@ -79,45 +90,45 @@ function addTask() {
 
 /* Mise en place des listes de tâche de la catégorie 2*/
 
-const inputBox1 = document.getElementById("input-box1");
-const listContainer1 = document.getElementById("list-container1");
+//const inputBox1 = document.getElementById("input-box1");
+//const listContainer1 = document.getElementById("list-container1");
 
-function addTask1() {
-    if (inputBox1.value === '') {
-        alert("Vous devez écrire quelquechose!");
-    }
-    else {
-        const li = document.createElement("li");
-        li.classList.add("task-list1");
-        li.innerHTML = inputBox1.value;
-        localStorage.setItem("task", inputBox1.value);
-        listContainer1.appendChild(li);
+//function addTask1() {
+//  if (inputBox1.value === '') {
+//    alert("Vous devez écrire quelquechose!");
+//}
+//else {
+//const li = document.createElement("li");
+//li.classList.add("task-list1");
+//li.innerHTML = inputBox1.value;
+//localStorage.setItem("task", inputBox1.value);
+//listContainer1.appendChild(li);
 
-    }
-}
+//}
+//}
 
 /* Mis en place de la listes des tâche de la catégorie 3*/
 
-const inputBox2 = document.getElementById("input-box2");
-const listContainer2 = document.getElementById("list-container2");
+//const inputBox2 = document.getElementById("input-box2");
+//const listContainer2 = document.getElementById("list-container2");
 
-function addTask2() {
-    if (inputBox2.value === '') {
-        alert("Vous devez écrire quelquechose!");
-    }
-    else {
-        const li = document.createElement("li");
-        li.classList.add("task-list2");
-        li.innerHTML = inputBox2.value;
-        localStorage.setItem("task", inputBox2.value);
-        listContainer2.appendChild(li);
-
-
-    }
-}
-
-addTask.onclick = () => {
-    localStorage.setItem("key", "input-box.value")
+//function addTask2() {
+//  if (inputBox2.value === '') {
+//    alert("Vous devez écrire quelquechose!");
+//}
+//else {
+//  const li = document.createElement("li");
+// li.classList.add("task-list2");
+//   li.innerHTML = inputBox2.value;
+// localStorage.setItem("task", inputBox2.value);
+//listContainer2.appendChild(li);
 
 
-}
+//}
+//}
+
+//addTask.onclick = () => {
+//  localStorage.setItem("key", "input-box.value")
+
+
+//}
