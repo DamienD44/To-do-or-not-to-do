@@ -47,6 +47,7 @@ function displayMainContent() {
     mainContent.appendChild(card);
   }
 }
+
 function displayPrecCard() {
   const carousselPrecElement = document.querySelector(".caroussel-prec");
   if (carousselPrecElement) carousselPrecElement.remove();
@@ -317,3 +318,27 @@ function removeMenu(el) {
   document.querySelector("main").style.filter = "blur(0)";
   document.querySelector("header").style.filter = "blur(0)";
 }
+
+addBtn.addEventListener("click", () => {
+  const newTask = inputTxt.value;
+  const category = parent.querySelector("h2").innerHTML;
+  let newCard = localStorage.getItem("cards");
+  newCard = JSON.parse(newCard);
+  for (const cate of newCard) {
+    if (cate.title === category) cate.content.push(newTask);
+  }
+  newCard = JSON.stringify(newCard);
+  localStorage.setItem("cards", newCard);
+});
+
+addBtn.addEventListener("click", () => {
+  const newTask = inputTxt.value;
+  const category = parent.querySelector("h2").innerHTML;
+  let newCard = localStorage.getItem("cards");
+  newCard = JSON.parse(newCard);
+  for (const cate of newCard) {
+    if (cate.title === category) cate.content.push(newTask);
+  }
+  newCard = JSON.stringify(newCard);
+  localStorage.setItem("cards", newCard);
+});
