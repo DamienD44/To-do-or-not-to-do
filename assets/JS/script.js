@@ -40,6 +40,10 @@ function displayMainContent() {
       task.textContent = todo;
       card.appendChild(task);
     }
+    let addTask = document.createElement("div");
+    addTask.classList.add("todo");
+    addTask.textContent = "Ajouter une tâche";
+    card.appendChild(addTask);
     mainContent.appendChild(card);
   }
 }
