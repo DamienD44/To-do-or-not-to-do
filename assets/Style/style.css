@@ -1,11 +1,338 @@
+@import url("https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap");
+
 * {
   box-sizing: border-box;
+  font-family: "Inria Sans", serif;
 }
 
 body {
   margin: 0;
+  font-family: "Inria Sans", serif;
+  font-weight: 400;
+  font-style: normal;
+  --main-color: #c4d7f2;
+  --secondary-color: #624cab;
+}
+h2 {
+  margin: 0;
+}
+li,
+ul {
+  list-style-type: none;
+}
+.no-des {
+  display: none;
 }
 
+input,
+input:focus {
+  border: 0;
+  outline: none;
+}
+
+header {
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 7.5vh;
+  background-color: var(--secondary-color);
+  min-height: 75px;
+  max-height: 100px;
+}
+
+header h3 {
+  color: var(--main-color);
+  text-align: center;
+}
+header > h3,
+header > div {
+  width: 20%;
+  flex-shrink: 1;
+}
+header > div > p {
+  color: var(--secondary-color);
+  margin: 0;
+}
+
+header > h3,
+header > div > p {
+  white-space: nowrap;
+  font-size: clamp(0px, 2vw, 12.5px);
+}
+
+input::placeholder {
+  color: var(--secondary-color);
+  font-size: vw;
+}
+
+header img {
+  height: 50%;
+}
+header > img {
+  width: 3%;
+}
+header > div > img {
+  width: 100%;
+}
+header > a {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+header > div {
+  display: flex;
+  align-items: center;
+  height: 70%;
+  background-color: var(--main-color);
+  border-radius: 5px;
+  padding: 0 10px;
+}
+.searchbar-container {
+  border: 1px solid black;
+  border-radius: 30px;
+  padding: 10px;
+}
+.button-container {
+  display: grid;
+  grid-template-columns: 75% 25%;
+  flex-shrink: 1;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.button-container > p {
+  width: 100%;
+}
+.searchbar-container > input {
+  width: 70%;
+  background-color: var(--main-color);
+}
+.searchbar-container > img {
+  width: 30%;
+  height: 100%;
+}
+.caroussel-container {
+  margin-top: 16px;
+  width: 100%;
+  height: 75vh;
+  display: flex;
+  align-items: center;
+}
+.caroussel-container * {
+  color: var(--secondary-color);
+}
+.future-card,
+.main-card {
+  background-color: #c4d7f2;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.todo {
+  background-color: #ffffff;
+  width: 90%;
+  margin: 0% 5% 5% 5%;
+  padding: 5px;
+  border-radius: 8px;
+  font-size: clamp(0px, 2vw, 12.5px);
+}
+.card-title {
+  font-size: 20px;
+  margin: 5%;
+}
+.future-card {
+  height: 66%;
+  filter: blur(1.25px);
+  width: 5%;
+}
+.card-prec {
+  border-radius: 0 10px 10px 0;
+}
+.card-next {
+  border-radius: 10px 0 0 10px;
+}
+.caroussel-button {
+  width: 5%;
+  margin: 0 2.5%;
+  cursor: pointer;
+}
+.main-container {
+  border: 0;
+  display: flex;
+  height: 100%;
+  width: 70%;
+}
+.main-container div {
+  width: 30%;
+}
+.main-container > div:nth-child(-n + 2) {
+  margin-right: 5%;
+}
+.mobile-main-container {
+  display: none;
+}
+.new-category-container {
+  position: fixed;
+  width: 50vw;
+  height: 50vh;
+  top: 25vh;
+  left: 25vw;
+  background-color: var(--main-color);
+  border: 3px solid var(--secondary-color);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.new-category-container > input {
+  margin-bottom: 7.5%;
+  padding: 12px;
+  text-align: center;
+  border-radius: 10px;
+}
+.new-category-container > h2 {
+  margin-top: 17.5%;
+  color: var(--secondary-color);
+}
+.new-category-container * {
+  font-size: clamp(0px, 2vw, 12.5px);
+}
+.new-category-container h2 {
+  font-size: clamp(0px, 4vw, 25px);
+}
+.new-category-buttons-container button:first-of-type {
+  margin-right: 10px;
+}
+.sandwich-button {
+  cursor: pointer;
+}
+.burger-menu-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: clamp(150px, 90vw, 300px);
+  height: 100%;
+  background-color: var(--main-color);
+  border-right: var(--secondary-color) 4px solid;
+}
+.burger-menu-head-container {
+  height: 10vh;
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto 20%;
+  align-items: center;
+  justify-items: center;
+}
+.burger-menu-head-container > img {
+  width: 66%;
+  cursor: pointer;
+}
+hr {
+  height: 12px;
+  border: 0;
+  box-shadow: inset 0 12px 12px -12px var(--secondary-color);
+}
+.burger-menu-container h3,
+.burger-menu-container ul {
+  padding-left: 18px;
+}
+.burger-menu-category-list-container {
+  padding: 0 0 18px 18px;
+}
+.burger-menu-container ul {
+  margin: 0;
+}
+.burger-menu-container * {
+  color: var(--secondary-color);
+}
+.burger-menu-container a {
+  text-decoration: none;
+  color: var(--secondary-color);
+}
 /* media query mobile version */
-@media (max-width: 815px) {
+@media (max-width: 450px) {
+  .no-des {
+    display: block;
+  }
+  .no-mob {
+    display: none;
+  }
+  header {
+    min-height: 75px;
+    max-height: 100px;
+  }
+  header > img {
+    width: 10%;
+  }
+  header > div {
+    width: 60%;
+  }
+  .searchbar-container {
+    border-radius: 8px;
+  }
+  .searchbar-container > img {
+    height: 50%;
+  }
+  .caroussel-container {
+    display: none;
+  }
+  li {
+    list-style-type: none;
+  }
+  .mobile-main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    margin: 2.5% 5% 0 5%;
+  }
+  .mobile-main-container > li {
+    margin-top: 2.5%;
+    background-color: #c4d7f2;
+    border: 3px solid #624cab;
+    border-radius: 20px;
+  }
+  .mobile-main-container div {
+    width: 100%;
+    height: 10vh;
+  }
+  ul {
+    padding: 0;
+    margin: 0;
+  }
+  p {
+    margin: 0;
+  }
+  .mobile-card-head {
+    display: grid;
+    grid-template-columns: 80% 20%;
+    align-items: center;
+  }
+  .card-extend-button {
+    height: 66%;
+    width: 66%;
+    align-self: center;
+    margin: auto;
+    cursor: pointer;
+  }
+  .mobile-card-head > p {
+    padding-left: 36px;
+    font-size: 20px;
+  }
+  .mobile-card-content {
+    color: var(--secondary-color);
+    padding: 8px;
+    display: flex;
+    background-color: #ffffff;
+    width: 70%;
+    margin-left: 36px;
+    margin-bottom: 9px;
+    border: 3px solid var(--secondary-color);
+    border-radius: 10px;
+  }
+  .card-create-category {
+    cursor: pointer;
+  }
 }
