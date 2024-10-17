@@ -13,7 +13,7 @@
 <body>
   <!-- Mise en page du menu -->
   <header>
-    <nav>
+    <nav class="navbar">
       <div class="menuburger">
         <img id="menu" src="./Image/menuburger.svg" alt="menuburger">
       </div>
@@ -21,8 +21,8 @@
         <h1> Wild Remind Me</h1>
       </div>
       <div class="recherche">
-        <input type="search">
-        <input type="button" value="Rechercher">
+        <input id="barre" type="search">
+        <input id="navbtn" type="button" value="Rechercher">
       </div>
       <div class="add">
         <h3> Add Catégorie <img class="plus" src="./Image/add_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png"> </h3>
@@ -57,13 +57,13 @@
         <div id="todo-app1">
           <h2> Catégorie 2 </h2>
           <div id="row1">
-
+            <input type="text" id="input-box1" placeholder="Ajouter une tâche">
+            <button onclick="addTask1()">Ajouter</button>
 
           </div>
           <ul id="list-container1">
             <li id="checked1"></li>
-            <input type="text" id="input-box1" placeholder="Ajouter une tâche">
-            <button onclick="addTask1()">Ajouter</button>
+
           </ul>
 
         </div>

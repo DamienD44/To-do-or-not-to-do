@@ -5,6 +5,10 @@
 
 const inputBox = document.getElementById("input-box");
 const listContainer = document.getElementById("list-container");
+const li = document.createElement("li");
+li.innerHTML = localStorage.getItem("task");
+li.classList.add("task-list");
+listContainer.appendChild(li);
 
 function addTask() {
     if (inputBox.value === '') {
@@ -12,17 +16,19 @@ function addTask() {
     }
     else {
         const li = document.createElement("li");
+        li.classList.add("task-list");
         li.innerHTML = inputBox.value;
-        li.style.border = "solid 1px black";
-        li.style.borderRadius = "10px";
-        li.style.backgroundColor = "white";
-        li.style.margintop = "10px";
-        li.style.width = "90%";
-        li.style.margin = "auto"
+        localStorage.setItem("task", inputBox.value);
 
+        // li.style.border = "solid 1px black";
+        // li.style.borderRadius = "10px";
+        // li.style.backgroundColor = "white";
+        // li.style.margintop = "10px";
+        // li.style.width = "90%";
+        // li.style.margin = "auto"
         listContainer.appendChild(li);
-        li.style.marginBlock = "10px";
-        li.style.height = "50px";
+        // li.style.marginBlock = "10px";
+        // li.style.height = "50px";
     }
 }
 
@@ -39,7 +45,9 @@ function addTask1() {
     }
     else {
         const li = document.createElement("li");
+        li.classList.add("task-list1");
         li.innerHTML = inputBox1.value;
+        localStorage.setItem("task", inputBox.value);
         li.style.border = "solid 1px black";
         li.style.borderRadius = "10px";
         li.style.backgroundColor = "white";
@@ -67,6 +75,7 @@ function addTask2() {
         li.style.borderRadius = "10px";
         li.style.backgroundColor = "white";
         li.innerHTML = inputBox2.value;
+        localStorage.setItem("task", inputBox.value);
         li.style.width = "90%";
         li.style.margin = "auto"
         listContainer2.appendChild(li);
@@ -75,4 +84,8 @@ function addTask2() {
     }
 }
 
+addTask.onclick = () => {
+    localStorage.setItem("key", "input-box.value")
 
+
+}
