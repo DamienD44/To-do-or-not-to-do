@@ -143,7 +143,7 @@ function displayCreateCategoryMobile(parent) {
   });
   let cardTitle = document.createElement("p");
   cardTitle.textContent = "Create a new category";
-
+  card.style.width = "75%";
   card.appendChild(cardHead);
   cardHead.appendChild(cardTitle);
   cardHead.appendChild(cardExtendButton);
@@ -228,6 +228,7 @@ function createNewCategory(categoryName) {
   cards = data;
   displayNextCard();
   displayMainContent();
+  displayMobileMainContent();
 }
 
 //    Search category function
