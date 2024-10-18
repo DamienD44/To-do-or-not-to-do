@@ -214,19 +214,18 @@ header > div {
   border: 3px solid var(--secondary-color);
   border-radius: 15px;
   display: flex;
+  justify-content: space-evenly;
   flex-direction: column;
   align-items: center;
 }
 
 .new-category-container > input {
-  margin-bottom: 7.5%;
   padding: 12px;
   text-align: center;
   border-radius: 10px;
 }
 
 .new-category-container > h2 {
-  margin-top: 17.5%;
   color: var(--secondary-color);
 }
 
@@ -296,6 +295,26 @@ hr {
 .burger-menu-container a {
   text-decoration: none;
   color: var(--secondary-color);
+}
+.new-category-buttons-container > button:first-child {
+  background-color: rgb(243, 167, 235);
+  margin-right: 20px;
+}
+.new-category-buttons-container > button:last-child {
+  background-color: rgb(127, 255, 208);
+}
+.new-category-buttons-container > button {
+  background-color: #624cab;
+  margin-top: 8px;
+  width: 50px;
+  height: 25px;
+  border-radius: 8px;
+  font-size: 10px;
+
+  border: none;
+  color: #624cab;
+  gap: 15px;
+  border: 1px solid #624cab;
 }
 
 /* media query mobile version */
@@ -399,5 +418,45 @@ hr {
 
   .card-create-category {
     cursor: pointer;
+  }
+
+  .new-category-container {
+    width: 80vw;
+    left: 10vw;
+    height: 183px;
+  }
+
+  .new-category-container h2 {
+    margin-top: 11px;
+    font-size: 17px;
+  }
+
+  .new-category-container input {
+    margin-top: 10px;
+    width: 62vw;
+    height: 40px;
+    font-size: 12px;
+    color: #624cab;
+    border: 2px solid #624cab;
+  }
+  .new-category-buttons-container > button {
+    background-color: #624cab;
+    margin-top: 8px;
+    width: 50px;
+    height: 25px;
+    border-radius: 8px;
+    font-size: 10px;
+
+    border: none;
+    color: #624cab;
+    gap: 15px;
+    border: 1px solid #624cab;
+  }
+  .new-category-buttons-container > button:first-child {
+    background-color: rgb(243, 167, 235);
+    margin-right: 20px;
+  }
+  .new-category-buttons-container > button:last-child {
+    background-color: rgb(127, 255, 208);
   }
 }
