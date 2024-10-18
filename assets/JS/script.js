@@ -30,7 +30,6 @@ function displayMainContent() {
   const mainContent = document.querySelector(".main-container");
   mainContent.innerHTML = null;
   for (let x = 0; x < 3 && cards && cards[index + x]; x++) {
-    cards = JSON.parse(localStorage.getItem("cards"));
     let card = document.createElement("div");
     card.classList.add("main-card");
     let cardTitle = document.createElement("p");
@@ -101,8 +100,8 @@ function displayNextCard() {
     nextButton.addEventListener("click", () => {
       index++;
       displayMainContent();
-      displayPrecCard();
       displayNextCard();
+      displayPrecCard();
     });
     document
       .querySelector(".main-container")
@@ -118,7 +117,7 @@ function displayMobileMainContent() {
   const mobileMainContent = document.querySelector(".mobile-main-container");
   mobileMainContent.innerHTML = null;
   if (cards)
-    for (let i; i < cards.length; i++) {
+    for (let i = 0; i < cards.length; i++) {
       let card = document.createElement("li");
 
       let cardHead = document.createElement("div");
@@ -270,6 +269,7 @@ searchInput.addEventListener("input", (event) => {
   cards = cards.filter((el) => {
     return el.title.includes(event.target.value);
   });
+  console.log(cards);
   index = 0;
   displayPrecCard();
   displayNextCard();
