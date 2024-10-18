@@ -1,7 +1,7 @@
 /* Partie création de cartes manuel */
 
 // Sample des cartes à mettre dans le localstorage
-//[{"title":"Carte 0","content":["Ceci est la carte 0, tache 0","Ceci est la carte 0, tache 1"]},{"title":"Carte 1","content":["Ceci est la carte 1, tache 0","Ceci est la carte 1, tache 1"]},{"title":"Carte 2","content":["Ceci est la carte 2, tache 0","Ceci est la carte 2, tache 1"]},{"title":"Carte 3","content":["Ceci est la carte 3, tache 0","Ceci est la carte 3, tache 1"]},{"title":"Carte 4","content":["Ceci est la carte 4, tache 0","Ceci est la carte 4, tache 1"]}]
+//[{"title":"Carte 0","content":["Ceci est la carte 0, tache 0","Ceci est la carte 0, tache 1"]}]
 
 /*
 let cartes = [];
@@ -16,18 +16,20 @@ for (let y = 0; y < nbrOfCard; y++)
   });
 */
 /* Partie cartes dynamique depuis localstorage */
-let cards = JSON.parse(localStorage.getItem("cards"));
-
-/* desktop version */
 let index = 0;
+let cards = localStorage.getItem("cards");
 const carousselContainer = document.querySelector(".caroussel-container");
-displayPrecCard();
-displayNextCard();
-displayMainContent();
+if (cards) {
+  cards = JSON.parse(localStorage.getItem("cards"));
+  displayPrecCard();
+  displayNextCard();
+  displayMainContent();
+}
+/* desktop version */
 function displayMainContent() {
   const mainContent = document.querySelector(".main-container");
   mainContent.innerHTML = null;
-  for (let x = 0; x < 3 && cards[index + x]; x++) {
+  for (let x = 0; x < 3 && cards && cards[index + x]; x++) {
     cards = JSON.parse(localStorage.getItem("cards"));
     let card = document.createElement("div");
     card.classList.add("main-card");
@@ -57,7 +59,7 @@ function displayPrecCard() {
   if (carousselPrecElement) carousselPrecElement.remove();
   const precCardElement = document.querySelector(".card-prec");
   if (precCardElement) precCardElement.remove();
-  if (cards[index - 1]) {
+  if (cards && cards[index - 1]) {
     //  Créer la prévisu de la carte précédente
     let precCard = document.createElement("div");
     precCard.classList.add("future-card", "card-prec");
@@ -77,7 +79,7 @@ function displayPrecCard() {
     document
       .querySelector(".main-container")
       .insertAdjacentElement("beforebegin", preButton);
-  } else if (cards.length <= 3) {
+  } else if (cards && cards.length <= 3) {
     carousselContainer.style.justifyContent = "center";
   } else carousselContainer.style.justifyContent = "flex-end";
 }
@@ -86,7 +88,7 @@ function displayNextCard() {
   if (carousselNextElement) carousselNextElement.remove();
   const nextCardElement = document.querySelector(".card-next");
   if (nextCardElement) nextCardElement.remove();
-  if (cards[index + 3]) {
+  if (cards && cards[index + 3]) {
     let nextCard = document.createElement("div");
     nextCard.classList.add("future-card", "card-next");
     document
@@ -105,7 +107,7 @@ function displayNextCard() {
     document
       .querySelector(".main-container")
       .insertAdjacentElement("afterend", nextButton);
-  } else if (cards.length <= 3) {
+  } else if (cards && cards.length <= 3) {
     carousselContainer.style.justifyContent = "center";
   } else carousselContainer.style.justifyContent = "flex-start";
 }
@@ -115,27 +117,29 @@ displayMobileMainContent();
 function displayMobileMainContent() {
   const mobileMainContent = document.querySelector(".mobile-main-container");
   mobileMainContent.innerHTML = null;
-  for (const carte of cards) {
-    let card = document.createElement("li");
+  if (cards)
+    for (let i; i < cards.length; i++) {
+      let card = document.createElement("li");
 
-    let cardHead = document.createElement("div");
-    cardHead.classList.add("mobile-card-head");
+      let cardHead = document.createElement("div");
+      cardHead.classList.add("mobile-card-head");
 
-    let cardExtendButton = document.createElement("img");
-    cardExtendButton.src = "https://www.svgrepo.com/show/521469/arrow-down.svg";
-    cardExtendButton.classList.add("card-extend-button");
-    cardExtendButton.addEventListener("click", () => {
-      extendCard(card);
-    });
+      let cardExtendButton = document.createElement("img");
+      cardExtendButton.src =
+        "https://www.svgrepo.com/show/521469/arrow-down.svg";
+      cardExtendButton.classList.add("card-extend-button");
+      cardExtendButton.addEventListener("click", () => {
+        extendCard(card);
+      });
 
-    let cardTitle = document.createElement("p");
-    cardTitle.textContent = carte.title;
+      let cardTitle = document.createElement("p");
+      cardTitle.textContent = cards[i].title;
 
-    card.appendChild(cardHead);
-    cardHead.appendChild(cardTitle);
-    cardHead.appendChild(cardExtendButton);
-    mobileMainContent.appendChild(card);
-  }
+      card.appendChild(cardHead);
+      cardHead.appendChild(cardTitle);
+      cardHead.appendChild(cardExtendButton);
+      mobileMainContent.appendChild(card);
+    }
   displayCreateCategoryMobile(mobileMainContent);
 }
 function displayCreateCategoryMobile(parent) {
@@ -239,9 +243,15 @@ function removePopup() {
 function createNewCategory(categoryName) {
   let data = localStorage.getItem("cards");
   data = JSON.parse(data);
-  data.push({ title: categoryName, content: [] });
-  localStorage.setItem("cards", JSON.stringify(data));
-  cards = data;
+  if (data) {
+    data.push({ title: categoryName, content: [] });
+    localStorage.setItem("cards", JSON.stringify(data));
+    cards = data;
+  } else {
+    data = [{ title: categoryName, content: [] }];
+    localStorage.setItem("cards", JSON.stringify(data));
+    cards = data;
+  }
 }
 function createNewTask(taskcontent, categoryName) {
   let newCard = localStorage.getItem("cards");
