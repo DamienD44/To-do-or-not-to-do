@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../assets/Style/register.css" rel="stylesheet" />
+    <title>Register</title>
+  </head>
+  <body>
+    <div class="form-box">
+      <!-- Registration form -->
+      <div class="register-container">
+        <div class="top">
+          <span>Have an account ? <a href="login.html">Login</a></span>
+          <h1>Sign up</h1>
+        </div>
+        <main>
+          <div class="names">
+            <div class="input-box">
+              <input
+                type="text"
+                placeholder="Prénom"
+                class="input-field logo"
+                required
+              />
+              <img
+                src="../assets/images/bx-user.svg"
+                alt="user logo"
+                class="user-logo"
+              />
+            </div>
+
+            <div class="input-box">
+              <input
+                type="text"
+                placeholder="Nom"
+                class="input-field logo"
+                required
+              />
+              <img
+                src="../assets/images/bx-user.svg"
+                alt="user logo"
+                class="user-logo"
+              />
+            </div>
+          </div>
+          <!-- End of names  -->
+          <div class="input-box">
+            <input
+              type="text"
+              class="input-field"
+              id="identifiant"
+              placeholder="Identifiant"
+            />
+            <img
+              src="../assets/images/bx-envelope.svg"
+              alt="envelope"
+              class="other-logo"
+              id="envelope"
+            />
+          </div>
+          <div class="input-box">
+            <input
+              type="password"
+              class="input-field"
+              id="password"
+              placeholder="Mot de passe"
+            />
+            <img
+              src="../assets/images/bxs-lock-alt.svg"
+              alt="lock"
+              class="other-logo"
+              id="lock"
+            />
+          </div>
+          <div class="input-box">
+            <input
+              type="submit"
+              class="input-field register-button"
+              value="Register"
+            />
+          </div>
+          <div class="two-col">
+            <div class="one">
+              <input type="checkbox" id="check" />
+              <label for="check">Remember me</label>
+            </div>
+            <div class="two">
+              <label><a href="#">Conditions générales d'utilisation</a></label>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+    <script src="../assets/JS/register.js"></script>
+  </body>
+</html>
