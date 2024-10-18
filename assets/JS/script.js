@@ -29,6 +29,7 @@ if (cards) {
 function displayMainContent() {
   const mainContent = document.querySelector(".main-container");
   mainContent.innerHTML = null;
+  // Create a card for each category
   for (let x = 0; x < 3 && cards && cards[index + x]; x++) {
     let card = document.createElement("div");
     card.classList.add("main-card");
@@ -36,12 +37,14 @@ function displayMainContent() {
     cardTitle.classList.add("card-title");
     cardTitle.textContent = cards[index + x].title;
     card.appendChild(cardTitle);
+    //  Create a p element for each todo in the category
     for (const todo of cards[index + x].content) {
       let task = document.createElement("p");
       task.classList.add("todo");
       task.textContent = todo;
       card.appendChild(task);
     }
+    // Create button add task at the end of task listing
     let addTask = document.createElement("div");
     addTask.classList.add("todo");
     addTask.textContent = "Ajouter une tâche";
@@ -51,6 +54,11 @@ function displayMainContent() {
     card.appendChild(addTask);
     mainContent.appendChild(card);
   }
+  if (cards && index > 0) {
+    carousselContainer.style.justifyContent = "flex-start";
+  } else if (cards && cards.length <= 3) {
+    carousselContainer.style.justifyContent = "center";
+  } else carousselContainer.style.justifyContent = "flex-end";
 }
 
 function displayPrecCard() {
@@ -78,9 +86,7 @@ function displayPrecCard() {
     document
       .querySelector(".main-container")
       .insertAdjacentElement("beforebegin", preButton);
-  } else if (cards && cards.length <= 3) {
-    carousselContainer.style.justifyContent = "center";
-  } else carousselContainer.style.justifyContent = "flex-end";
+  }
 }
 function displayNextCard() {
   const carousselNextElement = document.querySelector(".caroussel-next");
@@ -106,9 +112,7 @@ function displayNextCard() {
     document
       .querySelector(".main-container")
       .insertAdjacentElement("afterend", nextButton);
-  } else if (cards && cards.length <= 3) {
-    carousselContainer.style.justifyContent = "center";
-  } else carousselContainer.style.justifyContent = "flex-start";
+  }
 }
 
 /* Mobile version */
@@ -180,6 +184,14 @@ function extendCard(card) {
       cardContent.innerHTML = el;
       cardContentContainer.appendChild(cardContent);
     });
+    // Créer add task at the end of task listing
+    let createNewTaskMobile = document.createElement("li");
+    createNewTaskMobile.classList.add("mobile-card-content");
+    createNewTaskMobile.innerHTML = "Create new task";
+    createNewTaskMobile.addEventListener("click", () => {
+      createPopup("task", cardTitle);
+    });
+    cardContentContainer.appendChild(createNewTaskMobile);
   } else {
     extendButton.src = arrowDown;
     card.querySelector(".mobile-card-content-container").remove();
@@ -193,6 +205,7 @@ document.querySelector(".add-category-button").addEventListener("click", () => {
   createPopup("category");
 });
 function createPopup(type, content) {
+  removePopup();
   document.querySelector("main").style.filter = "blur(1.25px)";
   document.querySelector("header").style.filter = "blur(1.25px)";
   let createCategory = document.createElement("div");
@@ -235,9 +248,12 @@ function createPopup(type, content) {
   });
 }
 function removePopup() {
-  document.querySelector(".new-category-container").remove();
-  document.querySelector("main").style.filter = "blur(0)";
-  document.querySelector("header").style.filter = "blur(0)";
+  const popup = document.querySelector(".new-category-container");
+  if (popup) {
+    popup.remove();
+    document.querySelector("main").style.filter = "blur(0)";
+    document.querySelector("header").style.filter = "blur(0)";
+  }
 }
 function createNewCategory(categoryName) {
   let data = localStorage.getItem("cards");
@@ -258,6 +274,7 @@ function createNewTask(taskcontent, categoryName) {
   for (const cate of newCard) {
     if (cate.title === categoryName) cate.content.push(taskcontent);
   }
+  cards = newCard;
   newCard = JSON.stringify(newCard);
   localStorage.setItem("cards", newCard);
 }
@@ -269,7 +286,6 @@ searchInput.addEventListener("input", (event) => {
   cards = cards.filter((el) => {
     return el.title.includes(event.target.value);
   });
-  console.log(cards);
   index = 0;
   displayPrecCard();
   displayNextCard();
