@@ -67,6 +67,9 @@ header > div > p {
   font-size: clamp(0px, 2vw, 12.5px);
 }
 
+header > h3 {
+  font-size: clamp(0px, 3vw, 22.5px);
+}
 input::placeholder {
   color: var(--secondary-color);
   font-size: vw;
@@ -106,6 +109,7 @@ header > div {
 }
 
 .button-container {
+  align-content: center;
   display: grid;
   grid-template-columns: 75% 25%;
   flex-shrink: 1;
@@ -130,7 +134,7 @@ header > div {
 .caroussel-container {
   margin-top: 16px;
   width: 100%;
-  height: 75vh;
+  height: 80vh;
   display: flex;
   align-items: center;
 }
@@ -317,6 +321,19 @@ hr {
   border: 1px solid #624cab;
 }
 
+.mobile-card-create-task-img {
+  width: 10%;
+}
+
+.new-task-desktop {
+  display: flex;
+  justify-content: space-between;
+}
+
+.curs-point {
+  cursor: pointer;
+}
+
 /* media query mobile version */
 @media (max-width: 450px) {
   .no-des {
@@ -410,14 +427,24 @@ hr {
     display: flex;
     background-color: #ffffff;
     width: 70%;
-    margin-left: 36px;
+    margin-left: 10%;
     margin-bottom: 9px;
     border: 3px solid var(--secondary-color);
     border-radius: 10px;
+    justify-content: space-between;
   }
-
-  .card-create-category {
-    cursor: pointer;
+  .mobile-card-create-task {
+    margin-left: 20%;
+  }
+  .card-create-category,
+  .mobile-card-create-task {
+    width: 45%;
+  }
+  .mobile-card-create-task-img {
+    width: 10%;
+  }
+  .mobile-main-container * {
+    color: var(--secondary-color);
   }
 
   .new-category-container {

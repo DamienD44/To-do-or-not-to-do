@@ -46,11 +46,15 @@ function displayMainContent() {
     }
     // Create button add task at the end of task listing
     let addTask = document.createElement("div");
-    addTask.classList.add("todo");
-    addTask.textContent = "Ajouter une tâche";
+    addTask.classList.add("todo", "new-task-desktop", "curs-point");
+    addTask.textContent = "Create a new task";
     addTask.addEventListener("click", () => {
       createPopup("task", cardTitle.textContent);
     });
+    let createTaskPlus = document.createElement("img");
+    createTaskPlus.classList.add("mobile-card-create-task-img");
+    createTaskPlus.src = "https://www.svgrepo.com/show/532997/plus-large.svg";
+    addTask.appendChild(createTaskPlus);
     card.appendChild(addTask);
     mainContent.appendChild(card);
   }
@@ -186,11 +190,19 @@ function extendCard(card) {
     });
     // Créer add task at the end of task listing
     let createNewTaskMobile = document.createElement("li");
-    createNewTaskMobile.classList.add("mobile-card-content");
-    createNewTaskMobile.innerHTML = "Create new task";
+    createNewTaskMobile.classList.add(
+      "mobile-card-content",
+      "mobile-card-create-task",
+      "curs-point"
+    );
+    createNewTaskMobile.innerHTML = "New task";
     createNewTaskMobile.addEventListener("click", () => {
       createPopup("task", cardTitle);
     });
+    let createTaskPlus = document.createElement("img");
+    createTaskPlus.classList.add("mobile-card-create-task-img");
+    createTaskPlus.src = "https://www.svgrepo.com/show/532997/plus-large.svg";
+    createNewTaskMobile.appendChild(createTaskPlus);
     cardContentContainer.appendChild(createNewTaskMobile);
   } else {
     extendButton.src = arrowDown;
@@ -339,8 +351,8 @@ function listCategories(parent) {
   parent.appendChild(separator);
 }
 function listLinksMenu(parent) {
-  const links = ["About us", "Contact", "legal mentions"];
-  const Title = "Liens inutile";
+  const links = ["About us", "Contact", "Legal mentions"];
+  const Title = "Useless links";
   let burgerMenuHeadTitle = document.createElement("h3");
   let categoryList = document.createElement("ul");
   categoryList.classList.add("links-list-container");
