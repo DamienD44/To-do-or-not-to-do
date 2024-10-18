@@ -44,7 +44,7 @@ function displayMainContent() {
       card.appendChild(task);
     }
     let addTask = document.createElement("div");
-    addTask.classList.add("todo");
+    addTask.classList.add("create-new-task");
     addTask.textContent = "Ajouter une tâche";
     addTask.addEventListener("click", () => {
       createPopup("task", cardTitle.textContent);
@@ -206,6 +206,8 @@ function createPopup(type, content) {
   createCategoryInput.placeholder = `My super ${type} name !`;
   createCategorySubmit.textContent = "Submit";
   createCategoryCancel.textContent = "Cancel";
+  createCategorySubmit.classList.add("new-category-button-submit");
+  createCategoryCancel.classList.add("new-category-button-cancel");
   buttonsContainer.classList.add("new-category-buttons-container");
   createCategory.classList.add("new-category-container");
   document.body.appendChild(createCategory);

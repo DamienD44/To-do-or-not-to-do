@@ -46,23 +46,24 @@ header {
 }
 
 header h3 {
+
   color: var(--main-color);
   text-align: center;
 }
 
-header > h3,
-header > div {
+header>h3,
+header>div {
   width: 20%;
   flex-shrink: 1;
 }
 
-header > div > p {
+header>div>p {
   color: var(--secondary-color);
   margin: 0;
 }
 
-header > h3,
-header > div > p {
+header>h3,
+header>div>p {
   white-space: nowrap;
   font-size: clamp(0px, 2vw, 12.5px);
 }
@@ -76,21 +77,21 @@ header img {
   height: 50%;
 }
 
-header > img {
+header>img {
   width: 3%;
 }
 
-header > div > img {
+header>div>img {
   width: 100%;
 }
 
-header > a {
+header>a {
   height: 100%;
   display: flex;
   align-items: center;
 }
 
-header > div {
+header>div {
   display: flex;
   align-items: center;
   height: 70%;
@@ -113,19 +114,39 @@ header > div {
   cursor: pointer;
 }
 
-.button-container > p {
+.new-category-button-cancel {
+  background-color: rgb(192, 15, 15);
+  border-radius: 10px;
+  padding: 8px;
+
+}
+
+.new-category-button-submit {
+  background-color: rgb(40, 193, 40);
+  border-radius: 10px;
+  padding: 8px;
+}
+
+.new-category-container>input {
+  margin-top: 15px;
+}
+
+
+.button-container>p {
   width: 100%;
 }
 
-.searchbar-container > input {
+.searchbar-container>input {
   width: 70%;
   background-color: var(--main-color);
 }
 
-.searchbar-container > img {
+.searchbar-container>img {
   width: 30%;
   height: 100%;
 }
+
+
 
 .caroussel-container {
   margin-top: 16px;
@@ -147,9 +168,11 @@ header > div {
   flex-direction: column;
   align-items: center;
 }
-.main-card > div.todo {
+
+.main-card>div.todo {
   width: 70%;
 }
+
 .todo {
   background-color: #ffffff;
   width: 90%;
@@ -193,10 +216,10 @@ header > div {
 }
 
 .main-container div {
-  width: 30%;
+  width: 70%;
 }
 
-.main-container > div:nth-child(-n + 2) {
+.main-container>div:nth-child(-n + 2) {
   margin-right: 5%;
 }
 
@@ -218,14 +241,17 @@ header > div {
   align-items: center;
 }
 
-.new-category-container > input {
+.new-category-container>input {
   margin-bottom: 7.5%;
   padding: 12px;
   text-align: center;
   border-radius: 10px;
+  margin-top: 8%;
+  width: 70%;
+
 }
 
-.new-category-container > h2 {
+.new-category-container>h2 {
   margin-top: 17.5%;
   color: var(--secondary-color);
 }
@@ -236,10 +262,26 @@ header > div {
 
 .new-category-container h2 {
   font-size: clamp(0px, 4vw, 25px);
+  margin-top: 5%;
+}
+
+.new-category-container>.btn-cancel {
+  background-color: red;
+}
+
+.create-new-task {
+
+  background-color: #ffffff;
+  border: 2px solid black;
+  width: 70%;
+  border-radius: 10px;
+  text-align: center;
+
 }
 
 .new-category-buttons-container button:first-of-type {
   margin-right: 10px;
+
 }
 
 .sandwich-button {
@@ -265,7 +307,7 @@ header > div {
   justify-items: center;
 }
 
-.burger-menu-head-container > img {
+.burger-menu-head-container>img {
   width: 66%;
   cursor: pointer;
 }
@@ -313,11 +355,11 @@ hr {
     max-height: 100px;
   }
 
-  header > img {
+  header>img {
     width: 10%;
   }
 
-  header > div {
+  header>div {
     width: 60%;
   }
 
@@ -325,7 +367,7 @@ hr {
     border-radius: 8px;
   }
 
-  .searchbar-container > img {
+  .searchbar-container>img {
     height: 50%;
   }
 
@@ -345,7 +387,7 @@ hr {
     margin: 2.5% 5% 0 5%;
   }
 
-  .mobile-main-container > li {
+  .mobile-main-container>li {
     margin-top: 2.5%;
     background-color: #c4d7f2;
     border: 3px solid #624cab;
@@ -380,7 +422,7 @@ hr {
     cursor: pointer;
   }
 
-  .mobile-card-head > p {
+  .mobile-card-head>p {
     padding-left: 36px;
     font-size: 20px;
   }
