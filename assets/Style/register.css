@@ -130,9 +130,9 @@ h1 {
   color: white;
 }
 
-.names .input-box {
+.input-box {
   position: relative;
-  margin: 25;
+  /* margin: 25px; */
 }
 
 .user-logo {
@@ -143,7 +143,8 @@ h1 {
 
 .other-logo {
   position: absolute;
-  right: 38%;
+  right: 18px;
+  top: 12px;
 }
 
 #identifiant,
@@ -151,12 +152,12 @@ h1 {
   margin-bottom: 30px;
 }
 
-#lock {
+/* #lock {
   position: absolute;
   bottom: 40%;
-}
+} */
 
-#envelope {
-  position: absoute;
+/* #envelope {
+  position: absolute;
   bottom: 49%;
-}
+} */
