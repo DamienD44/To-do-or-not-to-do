@@ -6,7 +6,6 @@
 }
 
 body {
-
   margin: 0;
   font-family: "Inria Sans", serif;
   font-weight: 400;
@@ -51,19 +50,19 @@ header h3 {
   text-align: center;
 }
 
-header>h3,
-header>div {
+header > h3,
+header > div {
   width: 20%;
   flex-shrink: 1;
 }
 
-header>div>p {
+header > div > p {
   color: var(--secondary-color);
   margin: 0;
 }
 
-header>h3,
-header>div>p {
+header > h3,
+header > div > p {
   white-space: nowrap;
   font-size: clamp(0px, 2vw, 12.5px);
 }
@@ -77,21 +76,21 @@ header img {
   height: 50%;
 }
 
-header>img {
+header > img {
   width: 3%;
 }
 
-header>div>img {
+header > div > img {
   width: 100%;
 }
 
-header>a {
+header > a {
   height: 100%;
   display: flex;
   align-items: center;
 }
 
-header>div {
+header > div {
   display: flex;
   align-items: center;
   height: 70%;
@@ -114,16 +113,16 @@ header>div {
   cursor: pointer;
 }
 
-.button-container>p {
+.button-container > p {
   width: 100%;
 }
 
-.searchbar-container>input {
+.searchbar-container > input {
   width: 70%;
   background-color: var(--main-color);
 }
 
-.searchbar-container>img {
+.searchbar-container > img {
   width: 30%;
   height: 100%;
 }
@@ -148,7 +147,9 @@ header>div {
   flex-direction: column;
   align-items: center;
 }
-
+.main-card > div.todo {
+  width: 70%;
+}
 .todo {
   background-color: #ffffff;
   width: 90%;
@@ -161,6 +162,7 @@ header>div {
 .card-title {
   font-size: 20px;
   margin: 5%;
+  text-align: center;
 }
 
 .future-card {
@@ -194,7 +196,7 @@ header>div {
   width: 30%;
 }
 
-.main-container>div:nth-child(-n + 2) {
+.main-container > div:nth-child(-n + 2) {
   margin-right: 5%;
 }
 
@@ -216,14 +218,14 @@ header>div {
   align-items: center;
 }
 
-.new-category-container>input {
+.new-category-container > input {
   margin-bottom: 7.5%;
   padding: 12px;
   text-align: center;
   border-radius: 10px;
 }
 
-.new-category-container>h2 {
+.new-category-container > h2 {
   margin-top: 17.5%;
   color: var(--secondary-color);
 }
@@ -263,7 +265,7 @@ header>div {
   justify-items: center;
 }
 
-.burger-menu-head-container>img {
+.burger-menu-head-container > img {
   width: 66%;
   cursor: pointer;
 }
@@ -311,11 +313,11 @@ hr {
     max-height: 100px;
   }
 
-  header>img {
+  header > img {
     width: 10%;
   }
 
-  header>div {
+  header > div {
     width: 60%;
   }
 
@@ -323,7 +325,7 @@ hr {
     border-radius: 8px;
   }
 
-  .searchbar-container>img {
+  .searchbar-container > img {
     height: 50%;
   }
 
@@ -343,7 +345,7 @@ hr {
     margin: 2.5% 5% 0 5%;
   }
 
-  .mobile-main-container>li {
+  .mobile-main-container > li {
     margin-top: 2.5%;
     background-color: #c4d7f2;
     border: 3px solid #624cab;
@@ -378,7 +380,7 @@ hr {
     cursor: pointer;
   }
 
-  .mobile-card-head>p {
+  .mobile-card-head > p {
     padding-left: 36px;
     font-size: 20px;
   }
